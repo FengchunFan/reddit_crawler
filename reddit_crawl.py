@@ -23,12 +23,12 @@ for topic in topics:
     subreddit = reddit.subreddit(topic).hot(limit = 5000)
     for post in subreddit:
         if(page_counter < page_limit):
-            posts.append([post.title, post.score, post.url, post.num_comments])
+            posts.append([post.title, post.score, post.selftext, post.url, post.num_comments])
             page_counter = page_counter + 1
         else:
             break
 
-posts = pd.DataFrame(posts,columns=['title', 'score', 'url', 'num_comments'])
+posts = pd.DataFrame(posts,columns=['title', 'score', 'text', 'url', 'num_comments'])
 
 #check if document exist in the first place
 if os.path.exists(f'collected_reddits_{document_number}.csv'):
