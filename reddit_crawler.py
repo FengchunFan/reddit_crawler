@@ -19,14 +19,14 @@ for topic in topics:
     subreddit = reddit.subreddit(topic).hot(limit=None)
     for post in subreddit:
         if page_counter < page_limit:
-            posts.append([post.title, post.score, post.subreddit, post.url, post.num_comments])
+            posts.append([post.title, post.score, post.subreddit, post.selftext, post.url, post.num_comments])
             page_counter += 1
         else:
             print("reached page limit: ", page_limit)
             print(len(posts))
             break
 
-df = pd.DataFrame(posts, columns=['title', 'score', 'subreddit', 'url', 'num_comments'])
+df = pd.DataFrame(posts, columns=['title', 'score', 'subreddit', 'text', 'url', 'num_comments'])
 
 df.to_csv(document, index=False)
 
