@@ -2,11 +2,12 @@ import praw
 import csv
 import os
 import sys
+import pandas as pd
 
 reddit = praw.Reddit(client_id='5hgP0Pr-M7fOEg4wGS29aw', client_secret='zt70g1g4xPtseuy-AifqgHf2DWbetQ', user_agent='172_crawler')
 
 topics = ['all']
-page_limit = 5000
+page_limit = 2000
 page_counter = 0
 max_file_size = 0.1 * 1024 * 1024  # 1 MB in bytes
 document_number = 1
@@ -25,12 +26,18 @@ for topic in topics:
             print(len(posts))
             break
 
+df = pd.DataFrame(posts, columns=['title', 'score', 'subreddit', 'url', 'num_comments'])
+
+df.to_csv(document, index=False)
+
+'''
 with open(document, mode='w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
     writer.writerow(['title', 'score', 'subreddit', 'url', 'num_comments'])  # header row
     for post in posts:
         writer.writerow(post)
 
+'''
 '''
 def post_to_file(posts, document):
     global document_number
