@@ -6,7 +6,7 @@ import sys
 reddit = praw.Reddit(client_id='5hgP0Pr-M7fOEg4wGS29aw', client_secret='zt70g1g4xPtseuy-AifqgHf2DWbetQ', user_agent='172_crawler')
 
 topics = ['all']
-page_limit = 3000
+page_limit = 5000
 page_counter = 0
 max_file_size = 0.1 * 1024 * 1024  # 1 MB in bytes
 document_number = 1
@@ -15,7 +15,7 @@ document = f"collected_reddits_{document_number}.csv"
 posts = []
 
 for topic in topics:
-    subreddit = reddit.subreddit(topic).hot(limit=10000)
+    subreddit = reddit.subreddit(topic).hot(limit=None)
     for post in subreddit:
         if page_counter < page_limit:
             posts.append([post.title, post.score, post.subreddit, post.url, post.num_comments])
