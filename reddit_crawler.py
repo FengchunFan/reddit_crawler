@@ -6,8 +6,8 @@ import pandas as pd
 
 reddit = praw.Reddit(client_id='5hgP0Pr-M7fOEg4wGS29aw', client_secret='zt70g1g4xPtseuy-AifqgHf2DWbetQ', user_agent='172_crawler')
 
-topics = ['all']
-page_limit = 2000
+topics = ['ucr','riverside','california']
+page_limit = 5000
 page_counter = 0
 max_file_size = 0.1 * 1024 * 1024  # 1 MB in bytes
 document_number = 1
