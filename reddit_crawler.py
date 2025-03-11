@@ -4,7 +4,7 @@ import os
 import sys
 import pandas as pd
 
-reddit = praw.Reddit(client_id='5hgP0Pr-M7fOEg4wGS29aw', client_secret='zt70g1g4xPtseuy-AifqgHf2DWbetQ', user_agent='172_crawler')
+reddit = praw.Reddit()
 
 topics = ['ucr', 'riverside']
 page_limit = 5000
